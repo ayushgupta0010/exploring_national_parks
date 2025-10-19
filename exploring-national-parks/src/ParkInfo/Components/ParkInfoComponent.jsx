@@ -11,9 +11,14 @@ import React, { useState, useEffect } from 'react';
 import { ParkInfo } from '../Functionality/ParkInfo'; // Importing the functionality
 import '../../Style/parkInfo.css';
 import ParkVideos from './ParkVideos';
+import ParkingLots from './ParkingLots';
+import { FetchParkingLots } from '../Functionality/FetchParkingLots';
 
 function ParkInfoComponent() {
     const [parkJSON, setParks] = useState([]);
+    const [parkingLots, setParkingLots] = useState([]);
+    const [parkingLoading, setParkingLoading] = useState(false);
+    const [parkingError, setParkingError] = useState(null);
     
     var url = new URL(window.location);
     var page = 0;
@@ -39,6 +44,18 @@ function ParkInfoComponent() {
                     json = await ParkInfo(parkCode, 0);
                 console.log(json);
                 setParks(json.data);
+                // if a specific park is requested, fetch parking lots for it
+                if (parkCode) {
+                    try {
+                        setParkingLoading(true);
+                        const lotsJson = await FetchParkingLots({ value: parkCode });
+                        setParkingLots(lotsJson.data || []);
+                    } catch (err) {
+                        setParkingError(err.message || 'Failed to load parking lots');
+                    } finally {
+                        setParkingLoading(false);
+                    }
+                }
             } catch (error) {
                 // Handle the error, if needed
             }
@@ -138,6 +155,13 @@ function ParkInfoComponent() {
                                 {park.activities?.map((activity) =>(<>
                                 <div className='activity'><p key={activity.id}>{activity.name}</p></div></>))}
                             </div>
+
+                                                        <br />
+                                                        <div className='parking-lots-container'>
+                                                            {parkingLoading && <div>Loading parking lots...</div>}
+                                                            {parkingError && <div className="error">{parkingError}</div>}
+                                                            {!parkingLoading && !parkingError && <ParkingLots lots={parkingLots} />}
+                                                        </div>
 
                             
                             

@@ -1,3 +1,21 @@
+/* Parking lot detail page styling */
+
+.parking-lot-detail {
+    background: #fff;
+    border: 2px solid #d1d5db;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    padding: 2.5rem 2rem;
+    margin: 2.5rem auto;
+    max-width: 650px;
+}
+
+.parking-lot-detail h2 {
+    background: linear-gradient(90deg, #e3e3e3 60%, #f7f7f7 100%);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
 /* Responds to the ParkInfo.jsx component */
 .park-info-parent{
     margin-top: 5.5rem;

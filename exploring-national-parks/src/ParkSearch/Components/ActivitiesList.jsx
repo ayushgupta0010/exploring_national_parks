@@ -40,7 +40,13 @@ function ActivitiesList() {
         fetchData();
     }, []);
 
-    const activities = posts?.map((post) => { return { value: post.id, label: post.name } });
+    // Map API activities into react-select options and append a Parking Lot option
+    const activitiesFromApi = posts?.map((post) => { return { value: post.id, label: post.name } }) || [];
+    const activities = [
+        ...activitiesFromApi,
+        // Add a custom option to search parks with parking lots
+        { value: 'parkinglot', label: 'Parking Lot' }
+    ];
     const animatedComponents = makeAnimated()
     const [selectedOption, setSelectedOption] = useState([]);
 
