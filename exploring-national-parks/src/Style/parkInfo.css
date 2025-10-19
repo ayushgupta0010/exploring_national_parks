@@ -167,3 +167,48 @@ img {
     padding: 3px;
     margin: 5px;
 }
+
+/* Parking lots boxed container */
+.parking-lot-detail {
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    padding: 1.25rem;
+    margin: 1.5rem auto;
+    max-width: 900px;
+}
+
+.parking-lot-detail h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.parking-lot-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.parking-lot-item:last-child {
+    border-bottom: none;
+}
+
+.parking-lot-title a {
+    font-weight: 700;
+    color: #111827;
+}
+
+.parking-lot-desc {
+    margin: 0.5rem 0;
+    color: #374151;
+}
+
+.parking-lot-meta span {
+    display: inline-block;
+    margin-right: 0.75rem;
+    color: #6b7280;
+}
+
+.parking-lot-actions a {
+    color: #2563eb;
+}

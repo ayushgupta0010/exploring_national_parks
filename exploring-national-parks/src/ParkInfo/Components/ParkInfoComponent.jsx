@@ -11,10 +11,14 @@ import React, { useState, useEffect } from "react";
 import { ParkInfo } from "../Functionality/ParkInfo"; // Importing the functionality
 import "../../Style/parkInfo.css";
 import ParkVideos from "./ParkVideos";
+import ParkingLots from "./ParkingLots";
 
 function ParkInfoComponent() {
   const [parkJSON, setParks] = useState([]);
   const [events, setEvents] = useState([]);
+  const [parkingLots, setParkingLots] = useState([]);
+  const [parkingLoading, setParkingLoading] = useState(false);
+  const [parkingError, setParkingError] = useState(null);
 
   var url = new URL(window.location);
   var page = 0;
@@ -30,17 +34,27 @@ function ParkInfoComponent() {
     const fetchData = async () => {
       try {
         var json;
-
-        //const parkCode = window.location.hash.substring(1); //hash value from selecting a park removing hash char
         if (parkCode == null) json = await ParkInfo("", page);
         else json = await ParkInfo(parkCode, 0);
-        console.log(json);
         setParks(json.data);
+        // fetch parking lots for this park
+        if (parkCode) {
+          setParkingLoading(true);
+          try {
+            const resp = await fetch(`https://developer.nps.gov/api/v1/parkinglots?parkCode=${parkCode}&api_key=0ilOFP8jTC2LMrwXFTullFqvHyVhBh9aHVW3OWEb`);
+            if (!resp.ok) throw new Error('Network response was not ok');
+            const lotsJson = await resp.json();
+            setParkingLots(lotsJson.data || []);
+          } catch (err) {
+            setParkingError(err.message || 'Failed to load parking lots');
+          } finally {
+            setParkingLoading(false);
+          }
+        }
       } catch (error) {
         // Handle the error, if needed
       }
     };
-
     fetchData();
   }, [page, parkCode]);
 
@@ -203,6 +217,12 @@ function ParkInfoComponent() {
                     </div>
                   </>
                 ))}
+              </div>
+              {/* Parking lot info at the bottom of the page */}
+              <div style={{ marginTop: '2rem' }}>
+                {parkingLoading && <div>Loading parking lots...</div>}
+                {parkingError && <div className="error">{parkingError}</div>}
+                {!parkingLoading && !parkingError && <ParkingLots lots={parkingLots} />}
               </div>
             </div>
           </>
