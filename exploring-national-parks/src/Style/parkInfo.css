@@ -1,9 +1,9 @@
 /* Responds to the ParkInfo.jsx component */
-.park-info-parent{
+.park-info-parent {
     margin-top: 5.5rem;
 }
 
-.park-info-button{
+.park-info-button {
     width: 50%;
     font-size: 1.5rem;
     margin: auto;
@@ -16,19 +16,19 @@
     cursor: pointer;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-a:hover{
+a:hover {
     text-decoration: underline;
 }
 
-img{
+img {
     width: 100%;
 }
 
-.parkInfo{
+.parkInfo {
     display: inline-block;
     background-repeat: no-repeat;
     background-size: cover;
@@ -40,8 +40,12 @@ img{
 }
 
 .park-info-welcome {
-    position:relative;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.5) 100%, rgba(255,255,255,1) 0%);
+    position: relative;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.5) 100%,
+        rgba(255, 255, 255, 1) 0%
+    );
 }
 
 .park-info-welcome #park-info-title {
@@ -51,32 +55,32 @@ img{
     text-align: center;
 }
 
-.park-info-welcome #info-title{
+.park-info-welcome #info-title {
     position: relative;
     padding-top: 5rem;
     color: black;
     font-size: 4rem;
 }
 
-.box-1{
+.box-1 {
     display: flex;
     width: 80%;
 }
 
-.hours{
+.hours {
     width: 40%;
     margin: 2rem;
     padding: 0.5rem;
     flex: 1;
     border-style: outset;
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .hours .hours-list {
     list-style-type: none;
 }
 
-.parkInfo .activities-list{
+.parkInfo .activities-list {
     margin-left: auto;
     margin-right: auto;
     /* width: 30%; */
@@ -85,7 +89,7 @@ img{
     flex-wrap: wrap;
 }
 
-.parkInfo .activity{
+.parkInfo .activity {
     background-color: rgba(255, 255, 255, 0.8);
     margin-left: auto;
     margin-right: auto;
@@ -98,18 +102,17 @@ img{
     font-weight: bold;
 }
 
-
-.parkDetail{
+.parkDetail {
     padding: 10px 10px 10px 10px;
     /*max-inline-size: 100px;*/
-   
+
     display: block;
-    position:relative;
+    position: relative;
     margin-left: auto;
     margin-right: auto;
 }
 
-.parkInfo .post-card{
+.parkInfo .post-card {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -120,7 +123,7 @@ img{
     border-style: solid;
 }
 
-.learn-more-name{
+.learn-more-name {
     font-weight: bold;
 }
 
@@ -134,7 +137,7 @@ img{
     text-decoration: none;
 }
 
-.parkInfo .parks{
+.parkInfo .parks {
     margin-left: auto;
     margin-right: auto;
     /* width: 30%; */
@@ -145,13 +148,22 @@ img{
     flex-wrap: wrap;
 }
 
-.parkInfo #activitiesDropdown{
+.parkInfo #activitiesDropdown {
     color: black;
 }
 
 .all-parks-info-welcome {
-    position:relative;
+    position: relative;
     padding: 3rem;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.5) 100%, rgba(255,255,255,1) 0%);
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.5) 100%,
+        rgba(255, 255, 255, 1) 0%
+    );
 }
 
+.events {
+    background-color: teal;
+    padding: 3px;
+    margin: 5px;
+}
